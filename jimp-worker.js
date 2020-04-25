@@ -1,7 +1,7 @@
 /* eslint-env worker */
 /* global Jimp */
 
-importScripts('./lib/jimp.min.js');
+importScripts('./jimp.min.js');
 
 self.addEventListener('message', e => {
   Jimp.read(e.data).then(lenna => {
