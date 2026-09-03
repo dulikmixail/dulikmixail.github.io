@@ -1,0 +1,175 @@
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Михаил Дулик — наверх">
+    <span class="brand-mark" aria-hidden="true">MD</span>
+    <span class="brand-copy">
+      <strong>Михаил Дулик</strong>
+      <small>Frontend · Angular</small>
+    </span>
+  </a>
+
+  <nav class="main-nav" aria-label="Основная навигация">
+    <a href="#experience">Опыт</a>
+    <a href="#expertise">Экспертиза</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+
+  <div class="header-actions">
+    <button
+      class="theme-toggle"
+      type="button"
+      (click)="toggleTheme()"
+      [attr.aria-label]="theme() === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему'"
+      [attr.title]="theme() === 'light' ? 'Тёмная тема' : 'Светлая тема'"
+    >
+      @if (theme() === 'light') {
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      } @else {
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"/></svg>
+      }
+    </button>
+    <a class="download-link compact" href="Mikhail-Dulik-Frontend-Developer-Angular.pdf" download>
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+      PDF
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> Минск · Беларусь · 7+ лет опыта</p>
+      <h1 id="hero-title">Frontend Developer<br><em>Angular</em></h1>
+      <p class="hero-lead">
+        Проектирую сложные интерфейсы, развиваю архитектуру и довожу функциональность
+        до production — с измеримым результатом для бизнеса.
+      </p>
+      <div class="hero-actions">
+        <a class="download-link" href="Mikhail-Dulik-Frontend-Developer-Angular.pdf" download>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+          Скачать резюме
+        </a>
+        <a class="text-link" href="https://t.me/m_dulik" target="_blank" rel="noreferrer">
+          Написать в Telegram <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-aside" aria-label="Профессиональный профиль">
+      <div class="code-label" aria-hidden="true">01 / PROFILE</div>
+      <p>
+        Специализируюсь на Angular-приложениях, state management, дизайн-системах,
+        кросс-проектном code review и непрерывной поставке.
+      </p>
+      <dl class="availability-list">
+        <div><dt>Формат</dt><dd>Удалённо · Гибрид · Офис</dd></div>
+        <div><dt>Занятость</dt><dd>Полная</dd></div>
+        <div><dt>Релокация</dt><dd>Готов</dd></div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="achievement-strip" aria-label="Ключевые результаты">
+    <div class="section-shell achievement-grid">
+      @for (achievement of achievements; track achievement.value) {
+        <article class="achievement">
+          <strong>{{ achievement.value }}</strong>
+          <div><h2>{{ achievement.label }}</h2><p>{{ achievement.detail }}</p></div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="content-section section-shell" id="experience" aria-labelledby="experience-title">
+    <header class="section-heading">
+      <div><p class="section-kicker">02 / EXPERIENCE</p><h2 id="experience-title">Опыт работы</h2></div>
+      <p>Финтех, продуктовая разработка и банковские системы — от интерфейса до архитектуры и релиза.</p>
+    </header>
+
+    <div class="timeline">
+      @for (experience of experiences; track experience.company) {
+        <article class="experience-card">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="experience-meta">
+            <p>{{ experience.period }}</p>
+            <span>{{ experience.duration }}</span>
+            @if (experience.location) { <span>{{ experience.location }}</span> }
+          </div>
+          <div class="experience-body">
+            <h3>
+              @if (experience.companyUrl) {
+                <a [href]="experience.companyUrl" target="_blank" rel="noreferrer">{{ experience.company }} <span aria-hidden="true">↗</span></a>
+              } @else { {{ experience.company }} }
+            </h3>
+            <p class="role">{{ experience.role }}</p>
+            <p class="experience-summary">{{ experience.summary }}</p>
+            <ul>
+              @for (highlight of experience.highlights; track highlight) { <li>{{ highlight }}</li> }
+            </ul>
+            @if (experience.technologies) {
+              <div class="tech-list" aria-label="Технологии">
+                @for (technology of experience.technologies; track technology) { <span>{{ technology }}</span> }
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="expertise-section" id="expertise" aria-labelledby="expertise-title">
+    <div class="section-shell">
+      <header class="section-heading light-heading">
+        <div><p class="section-kicker">03 / EXPERTISE</p><h2 id="expertise-title">Инженерный профиль</h2></div>
+        <p>Сильная база в Angular, архитектуре интерфейсов, качестве кода и production-поставке.</p>
+      </header>
+      <div class="skills-grid">
+        @for (group of skillGroups; track group.index) {
+          <article class="skill-group">
+            <span>{{ group.index }}</span>
+            <h3>{{ group.title }}</h3>
+            <ul>
+              @for (skill of group.skills; track skill) { <li>{{ skill }}</li> }
+            </ul>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section section-shell education" aria-labelledby="education-title">
+    <header class="section-heading">
+      <div><p class="section-kicker">04 / EDUCATION</p><h2 id="education-title">Образование</h2></div>
+    </header>
+    <div class="education-grid">
+      <article>
+        <p class="education-year">2017</p>
+        <h3>Белорусский государственный университет информатики и радиоэлектроники</h3>
+        <p>Информационные технологии и управление в технических системах</p>
+      </article>
+      <aside>
+        <p class="section-kicker">LANGUAGES</p>
+        <dl>
+          <div><dt>Белорусский</dt><dd>Родной</dd></div>
+          <div><dt>Английский</dt><dd>A2</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="section-shell contact-grid">
+      <div><p class="section-kicker">05 / CONTACT</p><h2 id="contact-title">Обсудим ваш продукт?</h2></div>
+      <div class="contact-links">
+        <a href="mailto:dulikmixail@gmail.com"><span>Email</span>dulikmixail&#64;gmail.com</a>
+        <a href="tel:+375297561519"><span>Телефон</span>+375 (29) 756-15-19</a>
+        <a href="https://t.me/m_dulik" target="_blank" rel="noreferrer"><span>Telegram</span>&#64;m_dulik ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-shell"><span>© 2026 Михаил Дулик</span><span>Разработано на Angular 22</span></div>
+</footer>
