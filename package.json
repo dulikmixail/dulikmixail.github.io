@@ -1,0 +1,31 @@
+{
+  "name": "mikhail-dulik-angular-resume",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Персональный сайт-резюме Frontend Developer (Angular)",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "dev": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "dependencies": {
+    "@angular/common": "22.1.5",
+    "@angular/compiler": "22.1.5",
+    "@angular/core": "22.1.5",
+    "@angular/platform-browser": "22.1.5",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1",
+    "zone.js": "0.15.1"
+  },
+  "devDependencies": {
+    "@angular/build": "22.1.5",
+    "@angular/cli": "22.1.5",
+    "@angular/compiler-cli": "22.1.5",
+    "typescript": "6.0.3"
+  }
+}
