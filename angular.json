@@ -28,7 +28,7 @@
             "inlineStyleLanguage": "css",
             "assets": [
               { "glob": "**/*", "input": "public" },
-              { "glob": "avatar.png", "input": "src/imgs", "output": "imgs" }
+              { "glob": "avatar-*.webp", "input": "src/imgs", "output": "imgs" }
             ],
             "styles": ["src/styles.css"],
             "outputPath": { "base": "dist", "browser": "" }

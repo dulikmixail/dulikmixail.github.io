@@ -46,17 +46,14 @@
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
+.brand-avatar {
+  display: block;
+  flex: 0 0 auto;
   width: 2.5rem;
   height: 2.5rem;
-  place-items: center;
-  color: var(--on-primary);
-  background: linear-gradient(135deg, var(--primary) 0 70%, var(--secondary) 70%);
-  border-radius: 0.7rem;
-  font-size: 0.84rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .brand-copy {
