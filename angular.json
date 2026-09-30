@@ -26,7 +26,10 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "assets": [{ "glob": "**/*", "input": "public" }],
+            "assets": [
+              { "glob": "**/*", "input": "public" },
+              { "glob": "avatar.png", "input": "src/imgs", "output": "imgs" }
+            ],
             "styles": ["src/styles.css"],
             "outputPath": { "base": "dist", "browser": "" }
           },
