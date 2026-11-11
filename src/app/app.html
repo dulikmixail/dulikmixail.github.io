@@ -21,6 +21,7 @@
   <nav class="main-nav" aria-label="Основная навигация">
     <a href="#experience">Опыт</a>
     <a href="#expertise">Экспертиза</a>
+    <a href="#about">Обо мне</a>
     <a href="#contact">Контакты</a>
   </nav>
 
@@ -64,6 +65,9 @@
           Написать в Telegram <span aria-hidden="true">↗</span>
         </a>
       </div>
+      <p class="resume-updated">
+        Обновлено на HH · <time datetime="2026-11-02T17:06">2 ноября 2026 в 17:06</time>
+      </p>
     </div>
 
     <aside class="hero-aside" aria-label="Профессиональный профиль">
@@ -92,7 +96,7 @@
       <dl class="availability-list">
         <div><dt>Формат</dt><dd>Удалённо · Гибрид · Офис</dd></div>
         <div><dt>Занятость</dt><dd>Полная · Частичная · Проектная</dd></div>
-        <div><dt>Релокация</dt><dd>Беларусь · Россия</dd></div>
+        <div><dt>Релокация</dt><dd>Россия</dd></div>
         <div><dt>Поездки</dt><dd>Готов к командировкам</dd></div>
       </dl>
     </aside>
@@ -112,7 +116,7 @@
   <section class="content-section section-shell" id="experience" aria-labelledby="experience-title">
     <header class="section-heading">
       <div><p class="section-kicker">02 / EXPERIENCE</p><h2 id="experience-title">Опыт работы</h2></div>
-      <p>Финансовые сервисы, платформа ставок и банковские системы — от сложных интерфейсов до общей архитектуры и релизов.</p>
+      <p>6 лет 9 месяцев опыта: финансовые сервисы, платформа ставок и два банковских продукта. Полные описания проектов, задачи и результаты.</p>
     </header>
 
     <div class="timeline">
@@ -123,6 +127,7 @@
             <p>{{ experience.period }}</p>
             <span>{{ experience.duration }}</span>
             @if (experience.location) { <span>{{ experience.location }}</span> }
+            <span class="experience-industry">Информационные технологии, системная интеграция, интернет · Разработка программного обеспечения</span>
           </div>
           <div class="experience-body">
             <h3>
@@ -131,15 +136,32 @@
               } @else { {{ experience.company }} }
             </h3>
             <p class="role">{{ experience.role }}</p>
-            <p class="experience-summary">{{ experience.summary }}</p>
-            <ul>
-              @for (highlight of experience.highlights; track highlight) { <li>{{ highlight }}</li> }
-            </ul>
-            @if (experience.technologies) {
-              <div class="tech-list" aria-label="Технологии">
-                @for (technology of experience.technologies; track technology) { <span>{{ technology }}</span> }
-              </div>
+            @for (project of experience.projects; track project.title) {
+              <section class="experience-project" [attr.aria-label]="project.title">
+                <h4>{{ project.title }}</h4>
+                <p class="experience-summary">{{ project.summary }}</p>
+                <p class="project-label">Достижения</p>
+                <ul>
+                  @for (highlight of project.highlights.slice(0, 3); track highlight) { <li>{{ highlight }}</li> }
+                </ul>
+                @if (project.highlights.length > 3) {
+                  <details class="resume-details project-details">
+                    <summary>
+                      <span class="details-collapsed">Ещё достижения</span>
+                      <span class="details-expanded">Свернуть подробности</span>
+                      <span class="details-count">+{{ project.highlights.length - 3 }}</span>
+                      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                    </summary>
+                    <ul>
+                      @for (highlight of project.highlights.slice(3); track highlight) { <li>{{ highlight }}</li> }
+                    </ul>
+                  </details>
+                }
+              </section>
             }
+            <div class="tech-list" aria-label="Технологии">
+              @for (technology of experience.technologies; track technology) { <span>{{ technology }}</span> }
+            </div>
           </div>
         </article>
       }
@@ -150,7 +172,7 @@
     <div class="section-shell">
       <header class="section-heading light-heading">
         <div><p class="section-kicker">03 / EXPERTISE</p><h2 id="expertise-title">Инженерный профиль</h2></div>
-        <p>Angular и реактивное управление состоянием, общие библиотеки, тестирование и доставка функционала до production.</p>
+        <p>Основной стек — Angular, TypeScript и RxJS. Архитектура SPA, SSR и PWA, UI-библиотеки и SDK, тестирование, производительность и доставка до production.</p>
       </header>
       <div class="skills-grid">
         @for (group of skillGroups; track group.index) {
@@ -166,9 +188,53 @@
     </div>
   </section>
 
+  <section class="content-section section-shell about-section" id="about" aria-labelledby="about-title">
+    <header class="section-heading">
+      <div><p class="section-kicker">04 / ABOUT</p><h2 id="about-title">Обо мне</h2></div>
+      <p>Люблю разбираться в сложных системах и делать их понятнее для пользователей и разработчиков.</p>
+    </header>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Frontend-разработчик с коммерческим опытом с 2019 года. Специализируюсь на Angular, TypeScript и RxJS. Разрабатывал банковские системы, внутренние финансовые сервисы и беттинг-платформу. Есть опыт запуска продукта практически с нуля и многолетнего развития большой кодовой базы.</p>
+        <p>Развивал общую frontend-архитектуру платформы ставок на спорт и киберспорт для двух лицензированных версий, реализовывал B2B-интеграцию через SDK. В банковских проектах разрабатывал сложные формы, таблицы и динамическую ролевую модель. Занимался модернизацией Angular-приложений, производительностью, общими библиотеками компонентов и доставкой функционала до production.</p>
+        <div class="interests">
+          <h3>Вне работы</h3>
+          <p>Рыбачу на фидер и катаюсь на эндуро. Мечтаю о большой мастерской с электроникой, сваркой и 3D-принтером.</p>
+        </div>
+      </div>
+      <aside class="work-card" aria-labelledby="work-title">
+        <h3 id="work-title">Условия работы</h3>
+        <dl class="work-list">
+          <div><dt>Желаемая должность</dt><dd>Frontend-разработчик (Angular, TypeScript)</dd></div>
+          <div><dt>Специализация</dt><dd>Программист, разработчик</dd></div>
+          <div><dt>Занятость</dt><dd>Полная, частичная, проектная работа / разовое задание</dd></div>
+          <div><dt>Формат</dt><dd>Удалённо, гибрид, на месте работодателя</dd></div>
+          <div><dt>Переезд</dt><dd>Готов к переезду по России</dd></div>
+          <div><dt>Командировки</dt><dd>Готов к командировкам</dd></div>
+          <div><dt>Время в пути</dt><dd>Не более часа до работы</dd></div>
+          <div><dt>Самозанятость</dt><dd>Есть</dd></div>
+        </dl>
+        <details class="resume-details personal-details">
+          <summary>
+            Личная информация
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <dl class="work-list">
+            <div><dt>Пол</dt><dd>Мужчина</dd></div>
+            <div><dt>Дата рождения</dt><dd><time datetime="1994-11-21">21 ноября 1994</time><small>31 год на дату обновления резюме</small></dd></div>
+            <div><dt>Проживает</dt><dd>Москва</dd></div>
+            <div><dt>Гражданство</dt><dd>Россия</dd></div>
+            <div><dt>Разрешение на работу</dt><dd>Беларусь, Россия</dd></div>
+            <div><dt>Медкнижка</dt><dd>Нет</dd></div>
+          </dl>
+        </details>
+      </aside>
+    </div>
+  </section>
+
   <section class="content-section section-shell education" aria-labelledby="education-title">
     <header class="section-heading">
-      <div><p class="section-kicker">04 / EDUCATION</p><h2 id="education-title">Образование</h2></div>
+      <div><p class="section-kicker">05 / EDUCATION</p><h2 id="education-title">Образование</h2></div>
     </header>
     <div class="education-grid">
       <article>
@@ -188,12 +254,19 @@
 
   <section class="contact-section" id="contact" aria-labelledby="contact-title">
     <div class="section-shell contact-grid">
-      <div><p class="section-kicker">05 / CONTACT</p><h2 id="contact-title">Обсудим ваш продукт?</h2></div>
+      <div>
+        <p class="section-kicker">06 / CONTACT</p>
+        <h2 id="contact-title">Обсудим ваш продукт?</h2>
+        <p class="contact-intro">Полная или частичная занятость, проектная работа и разовые задания.</p>
+      </div>
       <div class="contact-links">
-        <a href="mailto:dulikmixail@gmail.com"><span>Email</span>dulikmixail&#64;gmail.com</a>
-        <a href="tel:+79586592287"><span>Телефон · РФ</span>+7 (958) 659-22-87</a>
-        <a href="tel:+375297561519"><span>Телефон · РБ</span>+375 (29) 756-15-19</a>
-        <a href="https://t.me/m_dulik" target="_blank" rel="noreferrer"><span>Telegram</span>&#64;m_dulik ↗</a>
+        <a href="tel:+79586592287">
+          <span class="contact-label">Телефон · РФ</span>
+          <span class="contact-value">+7 (958) 659-22-87<small>Предпочитаемый способ связи</small></span>
+        </a>
+        <a href="tel:+375297561519"><span class="contact-label">Телефон · РБ</span><span class="contact-value">+375 (29) 756-15-19</span></a>
+        <a href="mailto:dulikmixail@gmail.com"><span class="contact-label">Email</span><span class="contact-value">dulikmixail&#64;gmail.com</span></a>
+        <a href="https://t.me/m_dulik" target="_blank" rel="noreferrer"><span class="contact-label">Telegram</span><span class="contact-value">&#64;m_dulik ↗</span></a>
       </div>
     </div>
   </section>
